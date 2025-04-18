@@ -17,11 +17,11 @@ def load_output(filename="output.txt"):
 
 def solve_vrp(matrix, algo_name):
     algo_execs = {
-        "Brute Force": "./brute_force.exe",
-        "Nearest Neighbor": "./nearest_neighbor.exe",
-        "Clarke Wright": "./clarke_wright.exe",
-        "Genetic Algorithm": "./genetic_algorithm.exe",
-        "Simulated Annealing": "./simulated_annealing.exe"
+        "Brute Force": "./brute_force",
+        "Nearest Neighbor": "./nearest_neighbor.unknown",
+        "Clarke Wright": "./clarke_wright.exe.unknown",
+        "Genetic Algorithm": "./genetic_algorithm.unknown",
+        "Simulated Annealing": "./simulated_annealing.unknown"
     }
     
     # Get number of vehicles from file or use default
