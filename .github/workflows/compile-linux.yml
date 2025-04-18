@@ -5,14 +5,14 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:  # Allows manual triggering
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/upload-artifact@v3.1.2
+    - uses: actions/checkout@v2
 
     - name: Install build dependencies
       run: |
@@ -34,8 +34,9 @@ jobs:
         # List compiled binaries
         ls -la
 
+    # Try using v2 instead
     - name: Upload compiled binaries
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         name: linux-executables
         path: |
