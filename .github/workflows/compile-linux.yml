@@ -1,0 +1,51 @@
+name: Compile C++ for Linux
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential
+
+    - name: Find and compile C++ files
+      run: |
+        # Navigate to cpp_algorithms directory if it exists
+        cd cpp_algorithms || echo "Using repository root"
+        
+        # Compile each algorithm
+        g++ -o brute_force brute_force.cpp -O2 || echo "Failed to compile brute_force"
+        g++ -o clarke_wright clarke_wright.cpp -O2 || echo "Failed to compile clarke_wright"
+        g++ -o genetic_algorithm genetic_algorithm.cpp -O2 || echo "Failed to compile genetic_algorithm" 
+        g++ -o nearest_neighbor nearest_neighbor.cpp -O2 || echo "Failed to compile nearest_neighbor"
+        g++ -o simulated_annealing simulated_annealing.cpp -O2 || echo "Failed to compile simulated_annealing"
+        
+        # List compiled binaries
+        ls -la
+
+    - name: Upload compiled binaries
+      uses: actions/upload-artifact@v3
+      with:
+        name: linux-executables
+        path: |
+          cpp_algorithms/brute_force
+          cpp_algorithms/clarke_wright
+          cpp_algorithms/genetic_algorithm
+          cpp_algorithms/nearest_neighbor
+          cpp_algorithms/simulated_annealing
+          brute_force
+          clarke_wright
+          genetic_algorithm
+          nearest_neighbor
+          simulated_annealing
