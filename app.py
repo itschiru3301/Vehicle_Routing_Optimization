@@ -7,7 +7,7 @@ from streamlit_folium import folium_static
 import os
 
 st.set_page_config(page_title="VRP Solver", layout="wide")
-st.title("🚚 Vehicle Routing Problem Solver with Real Routes")
+st.title(" Vehicle Routing Problem Solver with Real Routes")
 
 st.markdown("""
 This app solves the Vehicle Routing Problem (VRP) using various algorithms:
@@ -80,7 +80,7 @@ if submit:
         st.subheader("🛣️ Route Visualization")
         with st.spinner("Generating route visualization..."):
             route_map, html_file = plot_routes(route_indices, depot, deliveries, save_html=True)
-            folium_static(route_map, width=800, height=600)
+            folium_static(route_map, width=1400, height=600)
             
             if html_file:
                 with open(html_file, "rb") as f:
