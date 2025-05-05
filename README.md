@@ -1,5 +1,6 @@
 # Project Setup Guide
-clone this repository first
+### clone this repository first
+
 This guide will help you set up and run the application.
 
 ## 1. Setup Virtual Environment (Windows Only)
